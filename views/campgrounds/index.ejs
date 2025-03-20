@@ -1,0 +1,38 @@
+<% layout('/layouts/biolerplate.ejs') %>
+<link rel="stylesheet" href="/stylesheets/stars.css">
+    <h1 class="mb-3">All Campgrounds<b><a href="/campground/new"><i class="bi bi-plus-circle mx-3 my-1 fs-3"></i></a></b></h1>
+    <div id="cluster-map" class="mb-3"></div>
+    <% for(let campground of campgrounds){ %>
+        <div class="card mb-4">
+            <div class="row">
+            <div class="col-md-4">
+                <% if(campground.images.length) {%>
+                <img  crossorigin="anonymous" src="<%= campground.images[0].url%>" alt="" class="img-fluid" style="height: 100%;width:auto">
+                <% } else {%>
+                    <img crossorigin="anonymous" src="https://res.cloudinary.com/dyeayux62/image/upload/v1718386863/YelpCamp/unb3surcg98hjpr3uwd2.jpg" alt="" class="img-fluid"
+                    <% } %>
+            </div>
+            <div class="col-md-3">
+                <div class="card-body md-3">
+                    <h3 class="card-title mt-3"><%= campground.title  %></h3>
+                    <p class="card-text">
+                        <h5 class="text-muted mb-3" ><%= campground.location  %></h5>
+                     </p>
+                    <a href="/campground/<%= campground._id %>" class="btn btn-primary mt-2">View <%= campground.title %></a>
+                </div>
+
+            </div>
+        </div>
+        </div>
+        <% } %>
+        
+        <script>
+                const clusterToken = '<%- process.env.MAPBOX_TOKEN %>'
+                const campgrounds = { features : <%- JSON.stringify(campgrounds) %> }
+        </script>
+
+    <script src="/scripts/clusterMap.js"></script>
+
+
+
+

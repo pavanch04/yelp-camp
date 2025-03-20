@@ -1,0 +1,21 @@
+.alert .btn-close {
+    position: absolute;
+    top: 0.1rem;
+    padding :-2px 4px;
+    right: 0.3rem;
+    border : 0;
+    background-color: black;
+    color:#046c1c;  
+}
+
+.alert .btn-close:focus,
+.alert .btn-close:hover {
+    background: transparent;
+    color: #046c1c; /* Keeps the button appearance consistent */
+}
+
+.alert .btn-close:active {
+    background: transparent;
+    border: 2px solid white;
+    color :  #046c1c; /* Removes any default box shadow or outline */
+}
